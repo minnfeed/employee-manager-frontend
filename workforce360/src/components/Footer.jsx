@@ -1,6 +1,12 @@
-import React from "react";
-
+import React from 'react';
+import { useLocation } from 'react-router-dom';
 const Footer = () => {
+  const location = useLocation(); // Lấy thông tin vị trí hiện tại của URL
+
+  // Kiểm tra nếu URL là trang chủ ('/')
+  if (location.pathname !== '/') {
+    return null; // Nếu không phải trang chủ, Footer sẽ không hiển thị
+  }
   return (
     <footer className="bg-light text-center text-lg-start mt-auto shadow-sm">
       <div className="container p-4">

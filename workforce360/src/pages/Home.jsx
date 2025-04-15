@@ -1,9 +1,9 @@
-import React from "react";
-import "animate.css";
-import { ParallaxProvider, Parallax } from "react-scroll-parallax";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "font-awesome/css/font-awesome.min.css";
-import { Link } from "react-router-dom";
+import React from 'react';
+import 'animate.css';
+import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'font-awesome/css/font-awesome.min.css';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
@@ -16,9 +16,9 @@ const Home = () => {
             className="img-fluid w-100"
             alt="Hero Banner"
             style={{
-              maxHeight: "110vh",
-              objectFit: "cover",
-              filter: "brightness(60%)",
+              maxHeight: '110vh',
+              objectFit: 'cover',
+              filter: 'brightness(60%)',
             }}
           />
           <div className="position-absolute top-50 start-50 translate-middle text-center">
@@ -29,9 +29,12 @@ const Home = () => {
               <p className="lead animate__animated animate__fadeIn">
                 Quản lý nhân viên dễ dàng và chuyên nghiệp
               </p>
-              <Link to="/start" className="btn btn-primary px-4 py-2 mt-3 animate__animated animate__fadeIn">
+              <Link
+                to="/start"
+                className="btn btn-primary px-4 py-2 mt-3 animate__animated animate__fadeIn"
+              >
                 Bắt đầu ngay
-            </Link>
+              </Link>
             </Parallax>
           </div>
         </div>

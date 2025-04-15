@@ -1,20 +1,60 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+
+const headerVariants = {
+  hidden: { opacity: 0, y: -50 },
+  visible: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -50 },
+};
 
 const Header = () => {
+  const location = useLocation();
+  const isLoggedIn = true; // hoặc false tuỳ trạng thái
+  const isHome = location.pathname === '/';
   return (
-    <div className="position-fixed top-0 start-50 translate-middle-x mt-3 z-3" style={{ width: '80%', maxWidth: '1200px' }}>
+    <motion.div
+      className={`position-fixed ${isHome ? 'top-0 start-50 translate-middle-x' : ''} mt-3 z-3`}
+      style={{ width: '80%', maxWidth: '1200px' }}
+      initial={false}
+      animate={{
+        width: isHome ? '100%' : 200,
+        height: isHome ? 60 : '97%',
+        borderRadius: isHome ? '0%' : '0%',
+        left: isHome ? '50%' : 20,
+        top: isHome ? 0 : '48%',
+        x: isHome ? '-50%' : 0,
+        y: isHome ? 0 : '-50%',
+      }}
+      transition={{
+        duration: 1,
+        ease: 'easeInOut',
+      }}
+    >
       <nav
-        className="navbar navbar-expand-lg navbar-dark shadow px-4 py-2 border rounded-4"
+        className={`${isHome ? 'navbar navbar-expand-lg navbar-dark shadow px-4 py-2 border rounded-4 ' : 'sidebar navbar navbar-expand-lg navbar-dark bg-dark shadow px-4 py-3 border flex-column rounded-4'}`}
         style={{
+          height: isHome ? 60 : '100%',
           backgroundColor: 'rgba(0, 0, 0, 0.6)', // Nền trong suốt
           backdropFilter: 'blur(10px)', // Hiệu ứng mờ nền phía sau (glass effect)
           WebkitBackdropFilter: 'blur(10px)',
         }}
       >
-        <Link className="navbar-brand fw-bold text-white" to='/'>WorkForce360</Link>
+        <Link
+          className={`navbar-brand fw-bold text-white ${
+            !isHome
+              ? 'd-flex justify-content-center align-items-center w-100 me-0 border-bottom'
+              : ''
+          }`}
+          to="/"
+          style={!isHome ? { height: '20%' } : {}}
+        >
+          WorkForce360
+        </Link>
+
         <button
           className="navbar-toggler"
           type="button"
@@ -27,43 +67,55 @@ const Header = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div className="collapse navbar-collapse justify-content-between" id="navbarNavDropdown">
-          <ul className="navbar-nav">
-            <li className="nav-item">
-                <Link className="nav-link text-white" to="#">Dashboard</Link>
-            </li>
-            <li className="nav-item">
-                <Link className="nav-link text-white" to="#">Nhân viên</Link>
-            </li>
-            <li className="nav-item">
-                <Link className="nav-link text-white" to="#">Phòng ban</Link>
-            </li>
-            <li className="nav-item">
-                <Link className="nav-link text-white" to="#">Báo cáo</Link>
-            </li>
-          </ul>
-          <ul className="navbar-nav">
-            <li className="nav-item dropdown">
-              <Link
-                className="nav-link dropdown-toggle text-white"
-                to="#"
-                id="userDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <i ></i>Khang
+        <div
+          className={`collapse navbar-collapse justify-content-between`}
+          id="navbarNavDropdown"
+        >
+          <ul
+            className={`navbar-nav ${isHome ? ' align-items-center' : 'flex-column h-100 w-100'}`}
+            style={
+              !isHome
+                ? { height: '100vh', marginTop: '40px' }
+                : { height: '100%' }
+            }
+          >
+            <li className={`nav-item ${isHome ? '' : 'mb-5 mt-5'}`}>
+              <Link className="nav-link text-white" to="/DashBoard">
+                Dashboard
               </Link>
-              <ul className="dropdown-menu dropdown-menu-end">
-                <li><Link className="dropdown-item" to="#">Thông tin cá nhân</Link></li>
-                <li><hr className="dropdown-divider" /></li>
-                <li><Link className="dropdown-item text-danger" to="#">Đăng xuất</Link></li>
-              </ul>
+            </li>
+            <li className={`nav-item ${isHome ? '' : 'mb-5'}`}>
+              <Link className="nav-link text-white" to="#">
+                Nhân viên
+              </Link>
+            </li>
+            <li className={`nav-item ${isHome ? '' : 'mb-5'}`}>
+              <Link className="nav-link text-white" to="#">
+                Phòng ban
+              </Link>
+            </li>
+            <li className={`nav-item ${isHome ? '' : 'mb-5'}`}>
+              <Link className="nav-link text-white" to="#">
+                Báo cáo
+              </Link>
+            </li>
+            <li
+              className={`nav-item mt-auto ${isHome ? 'align-items-center' : 'mb-5'}`}
+            >
+              {isLoggedIn ? (
+                <Link className="nav-link text-white" to="/logout">
+                  Đăng xuất
+                </Link>
+              ) : (
+                <Link className="nav-link text-white" to="/login">
+                  Đăng nhập
+                </Link>
+              )}
             </li>
           </ul>
         </div>
       </nav>
-    </div>
+    </motion.div>
   );
 };
 

@@ -60,7 +60,7 @@ const getStatusBadge = (status) => {
 
 export default function Employee() {
   return (
-    <div className="container mt-5">
+    <div className="container mt-5" style={{}}>
       <h3 className="mb-4 text-primary">Quản lý nhân viên</h3>
       <Table striped bordered hover responsive className="shadow-sm rounded">
         <thead className="table-primary">

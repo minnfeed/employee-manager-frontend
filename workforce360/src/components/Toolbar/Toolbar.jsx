@@ -15,9 +15,6 @@ const Toolbar = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <Link className="navbar-brand" to="/">
-          {/* <img src="" width="36" /> */}
-        </Link>
         <div className="collapse navbar-collapse" id="navbarExample">
           <ul className="navbar-nav me-auto mb-0">
             <li className="nav-item">

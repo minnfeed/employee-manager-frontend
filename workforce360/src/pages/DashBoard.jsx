@@ -8,6 +8,7 @@ import { HiOutlineBuildingOffice } from 'react-icons/hi2';
 const Dashboard = () => {
   return (
     <div className="container">
+      <h3 className="mb-4 text-primary">Dash Board</h3>
       <div className="row">
         <div className="col-md-3">
           <Card

@@ -1,36 +1,38 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { FaBeer, FaCoffee, FaApple } from 'react-icons/fa';
+import { FaRegBell } from 'react-icons/fa';
 import Card from '../components/Card/Card';
-
+import { MdOutlineConnectedTv } from 'react-icons/md';
+import { GoPeople } from 'react-icons/go';
+import { HiOutlineBuildingOffice } from 'react-icons/hi2';
 const Dashboard = () => {
   return (
     <div className="container">
       <div className="row">
         <div className="col-md-3">
           <Card
-            icon={<FaBeer />}
+            icon={<GoPeople />}
             text="Tổng nhân viên"
-            iconBackgroundColor="#f0ad4e"
+            iconBackgroundColor="#409AEE"
           />
         </div>
         <div className="col-md-3">
           <Card
-            icon={<FaBeer />}
+            icon={<HiOutlineBuildingOffice />}
             text="Số phòng ban"
-            iconBackgroundColor="#f0ad4e"
+            iconBackgroundColor="#5EB562"
           />
         </div>
         <div className="col-md-3">
           <Card
-            icon={<FaBeer />}
+            icon={<MdOutlineConnectedTv />}
             text="Truy cập"
             iconBackgroundColor="#f0ad4e"
           />
         </div>
         <div className="col-md-3">
           <Card
-            icon={<FaApple />}
+            icon={<FaRegBell />}
             text="Thông báo"
             iconBackgroundColor="#ff5733"
           />

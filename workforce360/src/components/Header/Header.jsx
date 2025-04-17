@@ -1,15 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-
-const headerVariants = {
-  hidden: { opacity: 0, y: -50 },
-  visible: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -50 },
-};
 
 const Header = () => {
   const location = useLocation();
@@ -30,16 +24,20 @@ const Header = () => {
         y: isHome ? 0 : '-50%',
       }}
       transition={{
-        duration: 1,
+        duration: 1.2,
         ease: 'easeInOut',
       }}
     >
       <nav
-        className={`${isHome ? 'navbar navbar-expand-lg navbar-dark shadow px-4 py-2 border rounded-4 ' : 'sidebar navbar navbar-expand-lg navbar-dark bg-dark shadow px-4 py-3 border flex-column rounded-4'}`}
+        className={`${
+          isHome
+            ? 'navbar navbar-expand-lg navbar-dark shadow px-4 py-2 border rounded-4'
+            : 'sidebar navbar navbar-expand-lg navbar-dark shadow px-4 py-3 border flex-column rounded-4'
+        }`}
         style={{
           height: isHome ? 60 : '100%',
-          backgroundColor: 'rgba(0, 0, 0, 0.6)', // Nền trong suốt
-          backdropFilter: 'blur(10px)', // Hiệu ứng mờ nền phía sau (glass effect)
+          backgroundColor: isHome ? 'rgba(0, 0, 0, 0.3)' : 'rgba(0, 0, 0, 0.7)',
+          backdropFilter: 'blur(10px)',
           WebkitBackdropFilter: 'blur(10px)',
         }}
       >
@@ -85,7 +83,7 @@ const Header = () => {
               </Link>
             </li>
             <li className={`nav-item ${isHome ? '' : 'mb-5'}`}>
-              <Link className="nav-link text-white" to="#">
+              <Link className="nav-link text-white" to="Employee">
                 Nhân viên
               </Link>
             </li>
